@@ -1,0 +1,9 @@
+## Dados Externos:
+### Índices de Maturidade Digital por Dimensões:
+"$maturity_scores"
+
+### Classificações de Maturidade Digital das Dimensões:
+"$maturity_levels"
+
+### Formulário Respondido pelo Usuário:
+"$markdown_text"
