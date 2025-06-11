@@ -1,0 +1,11 @@
+[X] Criar o endpoint Flask e testar a captura do webhook do formulário Tally.
+
+[X] Criar o parse de dados para processar as respostas vindas do formulário.
+
+[X] Enviar as respostas estrutradas para o LLM com um bom prompt.
+
+[X] Consolidar texto + gráfico em um PDF bonito.
+
+[X] Configurar o envio automático dos dados e do PDF para uma base de dados no Notion.
+
+[ ] Fazer o deploy e testar o fluxo completo.
