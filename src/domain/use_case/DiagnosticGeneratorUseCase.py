@@ -56,7 +56,7 @@ class DiagnosticGeneratorUseCase:
                                                    radar_plot_file_path= radar_plot_file_path)
         
         http_response = await self.__repository.store_diagnostic(form_response= form_response,
-                                                 pdf_name= pdf_name, pdf_path= pdf_path)
+                                                                 pdf_name= pdf_name, pdf_path= pdf_path)
 
         temp_file_paths_list = [pdf_path, radar_plot_file_path]
 

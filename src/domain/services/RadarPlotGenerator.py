@@ -18,7 +18,7 @@ class RadarPlotGenerator:
 
         margin = dict(l= 0, r= 0, t= 20, b= 0)
 
-        if len(categories) == 6:
+        if len(categories) == 7:
             margin = dict(l= 0, r= 0, t= 20, b= 20)
 
         fig = self.__set_plot_layout(values= values, categories= categories, margin= margin)

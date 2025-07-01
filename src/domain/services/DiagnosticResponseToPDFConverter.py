@@ -169,22 +169,24 @@ class DiagnosticResponseToPDFConverter(FPDF):
         with Image.open(radar_plot_file_path) as img:
             px_width, px_height = img.size
 
-        mm_width = self.__px_to_mm(px_width)
-        mm_height = self.__px_to_mm(px_height)
+        image_width = self.__px_to_mm(px_width)
+        image_height = self.__px_to_mm(px_height)
 
         # Se não couber na página, adiciona nova
-        if self.get_y() + mm_height > self.h - self.b_margin:
+        if self.get_y() + image_height > self.h - self.b_margin:
             self.add_page()
 
-        self.image(radar_plot_file_path, x= 20, y= self.get_y(), w= mm_width)
+        self.image(radar_plot_file_path, x= 20, y= self.get_y(), w= image_width)
+        self.set_y(self.get_y() + image_height)
 
 
     def __add_diagnostic_method_link(self) -> None:
         title = """Quer entender melhor como funciona a nossa avaliação de maturidade digital para o seu negócio?"""
-        link_text_1 = """material explicativo"""
-        link_1 = "https://profuse-tithonia-50b.notion.site/Como-funciona-o-m-todo-de-avalia-o-do-Diagn-stico-de-Maturidade-Digital-da-Aight-20648875b70d809399c0e6c969a9c0ce"
-        link_text_2 = """Ou, entre em contato com a gente através do e-mail: """
-        link_2 = "mailto:fala@aight.com.br"
+        material_link_text = """material explicativo"""
+        material_link = "https://profuse-tithonia-50b.notion.site/Como-funciona-o-m-todo-de-avalia-o-do-Diagn-stico-de-Maturidade-Digital-da-Aight-20648875b70d809399c0e6c969a9c0ce"
+        email_link_text = """Ou, entre em contato com a gente através do e-mail: """
+        email_link_label = "fala@aight.com.br"
+        email_link = "mailto:fala@aight.com.br"
         
 
         title_font_size_pt = 18
@@ -202,7 +204,7 @@ class DiagnosticResponseToPDFConverter(FPDF):
 
         spacing = text_height_line
 
-        total_block_height = (title_height + spacing + text_height) +  (2 * spacing)
+        total_block_height = (title_height + spacing + text_height) + (2 * spacing)
 
         # Verificar espaço restante
         page_height = self.h
@@ -230,7 +232,7 @@ class DiagnosticResponseToPDFConverter(FPDF):
         self.cell(self.get_string_width("Acesse o nosso "), text_height_line, "Acesse o nosso ")
         self.set_font("Inter", "B", text_font_size_pt)
         self.set_text_color(0, 0, 139)
-        self.cell(self.get_string_width(link_text_1), text_height_line, link_text_1, link= link_1)
+        self.cell(self.get_string_width(material_link_text), text_height_line, material_link_text, link= material_link)
         self.set_font("Inter", "", text_font_size_pt)
         self.set_text_color(0, 0, 0)
         self.cell(0, text_height_line, " sobre a metodologia utilizada neste diagnóstico.")
@@ -238,7 +240,7 @@ class DiagnosticResponseToPDFConverter(FPDF):
         self.set_font("DejaVu", "", 12)
         self.cell(self.get_string_width("•  "), text_height_line, f"•  ")
         self.set_font("Inter", "", text_font_size_pt)
-        self.cell(self.get_string_width(link_text_2), text_height_line, link_text_2)
+        self.cell(self.get_string_width(email_link_text), text_height_line,email_link_text)
         self.set_font("Inter", "B", text_font_size_pt)
         self.set_text_color(0, 0, 139)
-        self.cell(0, text_height_line, link_2, link= link_2)
+        self.cell(0, text_height_line, email_link_label, link= email_link)
