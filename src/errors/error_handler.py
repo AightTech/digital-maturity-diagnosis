@@ -1,6 +1,8 @@
 from src.config.logger_config import setup_logger
 from src.presentation.http_value_objects.HttpResponse import HttpResponse
-from src.errors.types import HttpBadRequestError, HttpServerError, LLModelInvalidError
+from src.errors.types.HttpBadRequestError import HttpBadRequestError
+from src.errors.types.HttpServerError import HttpServerError
+from src.errors.types.LLModelInvalidError import LLModelInvalidError
 
 logger = setup_logger(name= "errors_handler")
 
