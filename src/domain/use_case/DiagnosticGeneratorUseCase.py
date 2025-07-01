@@ -1,4 +1,5 @@
 from typing import Dict
+import os
 from src.config.logger_config import setup_logger
 from src.presentation.http_value_objects.HttpResponse import HttpResponse
 from src.infrastructure.interfaces.DiagnosticRepositoryInterface import DiagnosticRepositoryInterface
@@ -21,6 +22,7 @@ class DiagnosticGeneratorUseCase:
         self.__parser = parser
         self.__repository = repository
         self.temp_folder_path = 'src/tmp/'
+        os.makedirs(self.temp_folder_path, exist_ok=True)
 
     async def generate(self, request_data: Dict) -> HttpResponse:
         form_response_data_parsed = self.__parser.parse(request_data= request_data)
